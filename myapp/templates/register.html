@@ -10,7 +10,11 @@
 {% endblock css %}
 
 {% block content %}
-{{msg}}
+      
+        
+        {{msg}}
+
+
 <form id="register-form" action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
