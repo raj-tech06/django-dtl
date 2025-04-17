@@ -1,53 +1,90 @@
 {% extends "common.html" %}
 {% block title %}
-register
+    Register
 {% endblock title %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
 {% block content %}
-<form action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
-
+{{msg}}
+<form id="register-form" action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-   <label for="username">Name:</label>
-   <input type="text" name="username" placeholder="Enter your name">
-   <br> 
-   <label for="email">Email:</label>
-   <input type="email" name="email" placeholder="Enter your email">
-   <br>
-   <label for="detail">Description:</label>
-   <textarea name="detail" cols="20" rows="5"></textarea>
-   <br>
-   <label for="phone">Contact:</label>
-   <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your phone number">
-   <br>
-   <br>
-   <label for="dob">DOB:</label>
-   <input type="date" name="dob" min="2007-01-01">
-   <br>
-   <br>
-   <label for="subscribe">Education:</label>
-   <input type="checkbox" name="subscribe" value="one" >B.Tech
-   <input type="checkbox" name="subscribe" value="two" >M.Tech
-   <input type="checkbox" name="subscribe" value="three">P.hd
-   
-   <br>
-   <label for="gender">Gender:</label>
-   <input type="radio" name="gender" value="male"> Male
-   <input type="radio" name="gender" value="female"> Female
-   <br>
-   <label for="profile-pic">Image:</label>
-   <input type="file" name="profile-pic" accept=".jpeg, .png" >
-   <br>
 
-   <label for="resume">Resume:</label>
-   <input type="file" name="resume" accept=".pdf, .doc" >
-   <br>
-   <label for="password">Password:</label>
-   <input type="password" name="password">
-   <br>
-   <label for="password">Con_Password:</label>
-   <input type="password" name="cpassword">
-   <br>
-   <input type="submit" value="Submit">
+    <div class="form-group">
+        <label for="username">Name:</label>
+        <input type="text" name="name" id="username" value="{{data.username}}" placeholder="Enter your name">
+    </div>
 
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="{{data.email}}" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+        <label for="detail">Description:</label>
+        <textarea name="detail" id="detail" value="{{data.detail}}" cols="20" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Contact:</label>
+        <input type="tel" name="phone" id="phone" value="{{data.phone}}" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your phone number">
+    </div>
+
+    <div class="form-group">
+        <label for="dob">DOB:</label>
+        <input type="date" name="dob" id="dob" value="{{data.dob}}" min="2007-01-01">
+    </div>
+
+    <div class="form-group">
+        <label>Education:</label>
+        <div class="checkbox-group">
+            <input type="checkbox" name="subscribe" value="one" id="edu-btech">
+            <label for="edu-btech">B.Tech</label>
+
+            <input type="checkbox" name="subscribe" value="two" id="edu-mtech">
+            <label for="edu-mtech">M.Tech</label>
+
+            <input type="checkbox" name="subscribe" value="three" id="edu-phd">
+            <label for="edu-phd">P.hd</label>
+        </div>
+    </div>
+
+    <label>Gender:</label>
+    <div class="radio-group">
+        <input type="radio" name="gender" value="male" id="gender-male">
+        <label for="gender-male">Male</label>
+
+        <input type="radio" name="gender" value="female" id="gender-female">
+        <label for="gender-female">Female</label>
+    </div>
+
+    <div class="form-group">
+        <label for="profile-pic">Image:</label>
+        <input type="file" name="profile-pic" id="profile-pic" value="{{data.profile}}" accept=".jpeg, .png">
+    </div>
+
+    <div class="form-group">
+        <label for="resume">Resume:</label>
+        <input type="file" name="resume" id="resume" value="{{data.resume}}" accept=".pdf, .doc">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+    </div>
+
+    <div class="form-group">
+        <label for="cpassword">Confirm Password:</label>
+        <input type="password" name="cpassword" id="cpassword">
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" id="submit-btn">
+    </div>
 </form>
+
 {% endblock content %}
