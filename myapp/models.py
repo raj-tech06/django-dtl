@@ -14,5 +14,5 @@ class Student(models.Model):
     Stu_document = models.FileField(upload_to='documents/', null=True, blank=True)
     Stu_password = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.Stu_name
+    # def __str__(self):
+    #     return self.Stu_name

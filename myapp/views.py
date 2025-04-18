@@ -76,23 +76,34 @@ def loginuser(request):
     if request.method == 'POST':
         e = request.POST.get('email')
         p = request.POST.get('password')
-
         user =Student.objects.filter(Stu_email=e)
 
         if user:
-            userdata=Student.objects.get(stu_email=e)
-            print(userdata.Stu_name)
-            print(userdata.Stu_password)
-            print(userdata.Stu_email)
-            print(userdata.Stu_contact)
-            print(userdata.Stu_dob)
+            userdata=Student.objects.get(Stu_email=e)
+            # print(userdata.Stu_name)
+            # print(userdata.Stu_password)
+            # print(userdata.Stu_email)
+            # print(userdata.Stu_contact)
+            # print(userdata.Stu_dob)
             # print(userdata.Stu_qualification)
+            print(userdata.Stu_contact)
+
+            userdata2={
+                'name':userdata.Stu_name,
+                'pass':userdata.Stu_password,
+                'email':userdata.Stu_email,
+                'contact':userdata.Stu_contact,
+                'dob':userdata.Stu_dob
+            }
+
+
             p1= userdata.Stu_password
+
             if p == p1:
-                return render(request, 'dashboard.html', {'msg': "Login successful!"})
+                return render(request, 'dashboard.html',{ 'msg': "Login successful!",'userdata':userdata2})
             else:
                 pmsg = "Invalid password!"
-                return render(request, 'login.html', {'msg': pmsg})
+                return render(request, 'login.html', {'pmsg': pmsg})
         else:
             msg = "Invalid email!"
             return render(request, 'register.html', {'msg': msg})  
@@ -102,3 +113,8 @@ def loginuser(request):
       
     # return render(request, "login.html")
     pass
+
+
+def dashboard(request):
+    return render(request, "dashboard.html")
+    # return HttpResponse('raj')
