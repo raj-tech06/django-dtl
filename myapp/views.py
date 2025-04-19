@@ -93,7 +93,8 @@ def loginuser(request):
                 'pass':userdata.Stu_password,
                 'email':userdata.Stu_email,
                 'contact':userdata.Stu_contact,
-                'dob':userdata.Stu_dob
+                'dob':userdata.Stu_dob,
+                'pic':userdata.Stu_image,
             }
 
 

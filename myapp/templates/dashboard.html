@@ -1,4 +1,64 @@
 {% extends "common.html" %}
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+
+  <div class="row">
+    <!-- Sidebar -->
+    <img src="{{ userdata.pic.url }}" alt="Profile Pic"
+    class="rounded-circle mb-3"
+    style="object-fit: cover; border: 5px solid #007bff; width:400px; height:400px; ">
+
+      <h4 class="text-center">Dashboard</h4>
+      <div class=" p-4">
+      <div class="card shadow-sm">
+        <div class="card-header text-center bg-primary text-white">
+      
+          <h5>User Profile</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>Name:</strong> {{ userdata.name }}</p>
+          <p><strong>Email:</strong> {{ userdata.email }}</p>
+          <p><strong>Contact:</strong> {{ userdata.contact }}</p>
+          <p><strong>DOB:</strong> {{ userdata.dob }}</p>
+          <p><strong>Password:</strong> {{ userdata.password }}</p> {# not safe to show in real #}
+        </div>
+      </div>
+    </div>
+    </div> 
+
+    <!-- Main Content -->
+    <div class="col-md-7 p-4">
+      <h2>Welcome, {{ data.username }}!</h2>
+      {% if msg %}
+        <div class="alert alert-success mt-3">{{ msg }}</div>
+      {% endif %}
+      <p>This is your modern dashboard with profile and controls.</p>
+      <img src="{{userdata.pic.url}}" alt="Profile Pic" width="100" height="100">
+
+
+    </div>
+
+    {% if userdata.Stu_image %}
+    <img src="{{userdata.pic.url}}" alt="Profile Pic"
+       class="rounded-circle mb-3"
+       style="object-fit: cover; border: 5px solid #007bff; width:200px; height:200px;">
+{% else %}
+  <p class="text-white text-center">No image uploaded.</p>
+{% endif %}
+
+<!-- <a download="" >download</a> -->
+
+    <!-- User Profile Card -->
+   
+  </div>
+</div>
+{% endblock %}
+
+
+{% comment %} {% extends "common.html" %}
 {% block title %}
 dashboard
 {% endblock title %}
@@ -16,4 +76,7 @@ username={{userdata.name}}
 {{userdata.dob}}
 
 
-{% endblock content %}
+{% endblock content %} {% endcomment %}
+
+
+
