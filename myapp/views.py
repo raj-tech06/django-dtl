@@ -7,6 +7,15 @@ def home(request):
     return render(request, "home.html")
     # return HttpResponse('raj')
 
+# def contact(request):
+#     return render(request, "contact.html")
+
+# def about(request):
+#     return render(request, "about.html")
+
+# def register(request):
+#     return render(request, "register.html")
+
 def contact(request):
     return render(request, "contact.html")
 
@@ -15,6 +24,7 @@ def about(request):
 
 def register(request):
     return render(request, "register.html")
+
 
 
 def registerdata(request):
