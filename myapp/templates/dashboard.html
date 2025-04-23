@@ -6,7 +6,6 @@
 
 
   <div class="row">
-    <!-- Sidebar -->
     <img src="{{ userdata.pic.url }}" alt="Profile Pic"
     class="rounded-circle mb-3"
     style="object-fit: cover; border: 5px solid #007bff; width:400px; height:400px; ">
@@ -19,6 +18,7 @@
           <h5>User Profile</h5>
         </div>
         <div class="card-body">
+        <p><strong>Id:</strong> {{ userdata.id }}</p>
           <p><strong>Name:</strong> {{ userdata.name }}</p>
           <p><strong>Email:</strong> {{ userdata.email }}</p>
           <p><strong>Contact:</strong> {{ userdata.contact }}</p>
@@ -51,32 +51,8 @@
 
 <!-- <a download="" >download</a> -->
 
-    <!-- User Profile Card -->
    
   </div>
 </div>
 {% endblock %}
-
-
-{% comment %} {% extends "common.html" %}
-{% block title %}
-dashboard
-{% endblock title %}
-
-
-{% block content %}
-<h1>welcomes to dashboard page</h1>
-
-
-{{msg}}
-username={{userdata.name}}
-{{userdata.pass}}
-{{userdata.email}}
-{{userdata.contact}}
-{{userdata.dob}}
-
-
-{% endblock content %} {% endcomment %}
-
-
 
