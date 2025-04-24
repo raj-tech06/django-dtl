@@ -135,3 +135,21 @@ def home1(request,pk):
             }
     
     return render(request, "home.html", {'userdata':userdata2})
+
+
+def contact1(request,pk):
+     userdata=Student.objects.get(id=pk)
+     userdata2={
+                'id':userdata.id,
+                'name':userdata.Stu_name,
+                'pass':userdata.Stu_password,
+                'email':userdata.Stu_email,
+                'contact':userdata.Stu_contact,
+                'dob':userdata.Stu_dob,
+                'pic':userdata.Stu_image,
+            }
+     return render(request, "home.html", {'userdata':userdata2})
+
+     
+
+
